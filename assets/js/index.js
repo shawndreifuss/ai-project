@@ -7,7 +7,7 @@ const message = document.querySelector(".message");
 
 let userText;
 //  API key
-const API_KEY = "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"; 
+const API_KEY = "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"; 
 
 const loadDataFromLocalstorage = () => {
   // Load saved chats and theme from local storage and apply/add on the page
