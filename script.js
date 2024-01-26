@@ -38,7 +38,7 @@ const createChatElement = (content, className) => {
 }
 
     // Send POST request to API, get response and set the reponse as paragraph element text content
-   async function getChatResponse(userText) {
+   async function getChatResponse(userText, incomingChatDiv) {
  
 
             const pElement = document.createElement("p");
@@ -82,7 +82,7 @@ const copyResponse = (copyBtn) => {
     setTimeout(() => copyBtn.textContent = "content_copy", 1000);
 }
 
-const showTypingAnimation = () => {
+const showTypingAnimation = (userMessage) => {
     // Display the typing animation and call the getChatResponse function
     const html = `<div class="chat-content">
                     <div class="chat-details">
@@ -99,7 +99,7 @@ const showTypingAnimation = () => {
     const incomingChatDiv = createChatElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
-    getChatResponse(incomingChatDiv);
+    getChatResponse(userMessage, incomingChatDiv);
 }
 
 const handleOutgoingChat = () => {
@@ -123,7 +123,7 @@ const handleOutgoingChat = () => {
     chatContainer.appendChild(outgoingChatDiv);
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
     setTimeout(showTypingAnimation, 500);
-    getChatResponse(userText);
+    showTypingAnimation(userText)
    
 }
 
